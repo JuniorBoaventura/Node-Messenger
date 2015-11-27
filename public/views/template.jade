@@ -1,0 +1,28 @@
+doctype html
+html(ng-app="messenger")
+  head
+    meta(charset="utf-8")
+    title Messenger
+    script(src="bower_components/jquery/dist/jquery.min.js")
+    script(src="bower_components/angular/angular.min.js")
+    script(src="bower_components/angular-route/angular-route.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="js/angular/app.module.js")
+    script(src="js/angular/route-config.js")
+
+    script(src="js/angular/controllers/chat.controller.js")
+    script(src="js/angular/controllers/login.controller.js")
+
+    script(src="js/angular/factories/socket.factory.js")
+    script(src="js/angular/factories/user.factory.js")
+    
+  body
+    form(name="formLogin" ng-controller="LoginController as login" ng-submit="login.submit()")
+      label username 
+      input(type="text", ng-model="login.username", required)
+      br
+      label password 
+      input(type="password", ng-model="login.password", required)
+      br
+      input(type="submit" )
+  

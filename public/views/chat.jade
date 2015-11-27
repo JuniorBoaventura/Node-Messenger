@@ -1,0 +1,7 @@
+div(ng-init="chat.getUsername()")
+  form(ng-submit="chat.submit()", id="form")
+    textarea(id="message", ng-model="chat.message")
+    input(type="submit")
+
+div(ng-repeat="message in chat.messages")
+  div {{ message.username + ':' + message.message }}
