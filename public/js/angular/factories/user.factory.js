@@ -17,8 +17,7 @@ function user($http) {
       username: username,
       password: password,
     };
-    data = angular.toJson(data);
-    console.log(data);
+
     $http.post('/login', data).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(response) {
