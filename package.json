@@ -6,9 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository" :
+  { "type" : "git",
+    "url" : "https://github.com/JuniorBoaventura/messenger.git"
+  },
   "author": "Junior Boaventura",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "jade": "^1.11.0",
