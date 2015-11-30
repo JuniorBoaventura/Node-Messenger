@@ -6,7 +6,7 @@ function config($routeProvider) {
   $routeProvider.
     when('/', {
       controller:   'LoginController',
-      controllerAs: 'toto',
+      controllerAs: 'login',
     }).
     when('/chat', {
       templateUrl:  'views/chat',
@@ -14,8 +14,8 @@ function config($routeProvider) {
       controllerAs: 'chat',
     }).
     when('/login', {
-      templateUrl:  'views/login',
-      controller:   'loginController',
+      templateUrl:  'getTemplate/login',
+      controller:   'LoginController',
       controllerAs: 'login',
     }).
     otherwise({

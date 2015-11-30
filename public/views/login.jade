@@ -1,1 +1,8 @@
-| Hello World!
+form(name="formLogin" ng-controller="LoginController as login" ng-submit="login.submit()")
+  label username 
+  input(type="text", ng-model="login.username", required)
+  br
+  label password 
+  input(type="password", ng-model="login.password", required)
+  br
+  input(type="submit" )
