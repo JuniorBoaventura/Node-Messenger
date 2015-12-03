@@ -1,7 +1,7 @@
 #      Directory      #
 #######################
 node_modules/
-public/img/
+public/media/
 public/fonts/
 public/bower_components
 
@@ -40,3 +40,4 @@ public/bower_components
 .Trashes
 ehthumbs.db
 Thumbs.db
+*~

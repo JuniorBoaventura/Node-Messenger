@@ -4,9 +4,9 @@ angular
   .module('messenger')
   .factory('user', user);
 
-user.$inject = ['$http'];
+user.$inject = ['$http','$location'];
 
-function user($http) {
+function user($http, $location) {
   var factory = {
     login: login,
   };
@@ -19,10 +19,10 @@ function user($http) {
     };
 
     $http.post('/login', data).then(function successCallback(response) {
-      console.log(response);
+      $location.path('/chat');
     }, function errorCallback(response) {
 
-      console.log(response);
+      $location.path('/login');
     });
   }
 

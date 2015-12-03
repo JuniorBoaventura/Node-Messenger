@@ -2,14 +2,14 @@ angular
   .module('messenger')
   .config(config);
 
-function config($routeProvider) {
+function config($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {
       controller:   'LoginController',
       controllerAs: 'login',
     }).
     when('/chat', {
-      templateUrl:  'views/chat',
+      templateUrl:  'getTemplate/chat',
       controller:   'ChatController',
       controllerAs: 'chat',
     }).
@@ -21,4 +21,6 @@ function config($routeProvider) {
     otherwise({
       redirectTo: '/',
     });
+
+  $locationProvider.html5Mode(true);
 }

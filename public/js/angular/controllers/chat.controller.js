@@ -26,11 +26,11 @@ function ChatController($scope, socket) {
 
   function submit() {
     var data = {
-      username:    vm.username,
-      message: vm.message,
+      message:  vm.message,
     };
     socket.emit('message', data);
     vm.message = '';
+    console.log('message sent');
   };
 
 }
