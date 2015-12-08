@@ -5,32 +5,37 @@ angular
   .module('messenger')
   .controller('ChatController', ChatController);
 
-ChatController.$inject = ['$scope', 'socket'];
+ChatController.$inject = ['$scope', 'socket', 'user'];
 
-function ChatController($scope, socket) {
+function ChatController($scope, socket, user) {
   var vm         = this;
   vm.message     = '';
   vm.username    = '';
   vm.submit      = submit;
-  vm.getUsername = getUsername;
   vm.messages = [];
-
-  function getUsername() {
-    vm.username = prompt('Username');
-  };
+  vm.connected = [];
+  vm.user = user.data;
+  console.log(user.data);
 
   socket.on('newMessage', function(data) {
     vm.messages.push(data);
-    console.log(data);
   });
+
+  // socket.on('connection', function(data) {
+  //   vm.connected.push(data);
+  // });
+  //
+  // socket.on('disconnectedClient', function(data) {
+  //
+  // });
 
   function submit() {
     var data = {
       message:  vm.message,
     };
-    socket.emit('message', data);
+    var toto = socket.emit('message', data);
+    console.log(toto);
     vm.message = '';
-    console.log('message sent');
   };
 
 }

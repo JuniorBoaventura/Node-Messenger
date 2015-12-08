@@ -8,15 +8,22 @@
   socket.$inject = ['$rootScope'];
 
   function socket($rootScope) {
-    console.log($rootScope);
+    function readCookie(cookieName) {
+      var re = new RegExp('[; ]' + cookieName + '=([^\\s;]*)');
+      var sMatch = (' ' + document.cookie).match(re);
+      if (cookieName && sMatch) return unescape(sMatch[1]);
+      return '';
+    }
+
     var socket = io.connect('http://localhost:2020');
+
+    // var socket = io.connect('http://localhost:2020' + window.location.host, { query: 'session_id=' + readCookie('connect.sid') });
 
     var factory = {
       on: function(eventName, callback) {
         function wrapper() {
           var args = arguments;
           $rootScope.$apply(function() {
-            console.log('toto');
             callback.apply(socket, args);
           });
         }

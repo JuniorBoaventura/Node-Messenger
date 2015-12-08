@@ -4,11 +4,12 @@ angular
   .module('messenger')
   .factory('user', user);
 
-user.$inject = ['$http','$location'];
+user.$inject = ['$http', '$location'];
 
 function user($http, $location) {
   var factory = {
     login: login,
+    data: userData,
   };
   return factory;
 
