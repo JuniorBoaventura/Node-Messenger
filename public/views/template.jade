@@ -17,6 +17,13 @@ html(ng-app="messenger")
     script(src="js/angular/factories/socket.factory.js")
     script(src="js/angular/factories/user.factory.js")
     
+    script(src="js/angular/directives/enterDirective.js")
+    script(type='text/javascript').
+      var userData = !{JSON.stringify(user)}
+    
+    link(href="css/normalize.css", rel="stylesheet")
+    link(href="css/style.css", rel="stylesheet")
+    
   body
     div(ng-view)
   

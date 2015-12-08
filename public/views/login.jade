@@ -1,8 +1,11 @@
-form(name="formLogin" ng-controller="LoginController as login" ng-submit="login.submit()")
-  label username 
-  input(type="text", ng-model="login.username", required)
-  br
-  label password 
-  input(type="password", ng-model="login.password", required)
-  br
-  input(type="submit" )
+div(class="relative")
+  div(class="loginWrapper verticalAlign")
+    div(class="login")
+      form(name="formLogin" ng-controller="LoginController as login" ng-submit="login.submit()")
+        input(type="text", ng-model="login.username", placeholder="username" required)
+        br
+        input(type="password", ng-model="login.password", placeholder="password" required)
+        br
+        input(type="submit" value="Connexion")
+    div
+      a(href='/register' class="register") Register
