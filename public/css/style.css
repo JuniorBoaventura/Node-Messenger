@@ -1,0 +1,94 @@
+body{
+  background-color: #eceef1;
+}
+.sideBar{
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  background-color: #26292e;
+}
+
+.chatWrapper{
+  width: 100%;
+  height: 100vh;
+  border-top: solid 2px #178cf7;
+}
+
+.textBox{
+  bottom: 0;
+
+}
+
+.chatWrapper textarea{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  right: 0;
+  bottom: 0;
+  border: none;
+  position: absolute;
+}
+
+.loginWrapper{
+  width: 300px;
+}
+
+.login{
+  width: 100%;
+  padding: 20px;
+  background-color: #FFF;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.loginWrapper input[type="text"], input[type="password"]{
+  border:none;
+  border-bottom: solid 1px #CCC;
+  padding: 10px 0;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 14px;
+  transition: border 0.5s;
+}
+
+.loginWrapper input[type="text"]:focus, input[type="password"]:focus{
+  outline: none;
+  border-color: #178cf7;
+}
+
+.loginWrapper input[type="submit"]{
+  background-color: #eeeeef;
+  color: #b7b6b6;
+  width: 100%;
+  border: none;
+  padding: 10px 0;
+  border-radius: 3px;
+}
+
+::-webkit-input-placeholder {
+  color: #b7b6b6;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.relative{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.verticalAlign{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.register{
+  font-size: 12px;
+  color: #178cf7;
+}
+
+.conversation{
+
+}
