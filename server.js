@@ -1,11 +1,36 @@
-var express       = require('express');
-var session       = require('express-session');
-var mongoose      = require('mongoose');
-var app           = express();
-var server        = require('http').Server(app);
-var io            = require('socket.io')(server);
-var path          = require('path');
-var bodyParser    = require('body-parser');
+var express          = require('express');
+var session          = require('express-session');
+var RedisStore       = require('connect-redis')(session);
+var SessionStore     = new RedisStore();
+var mongoose         = require('mongoose');
+var app              = express();
+var server           = require('http').Server(app);
+var io               = require('socket.io')(server);
+var path             = require('path');
+var bodyParser       = require('body-parser');
+var passportSocketIo = require('passport.socketio');
+
+app.use(session({ key: 'connect.sid', store: SessionStore, secret: 'Act0yoaj2D', resave: false, saveUninitialized: false}));
+
+io.use(passportSocketIo.authorize({
+  cookieParser: require('cookie-parser'),
+  key:          'connect.sid',
+  secret:       'Act0yoaj2D',
+  store:        SessionStore,
+  success:      onAuthorizeSuccess,
+  fail:         onAuthorizeFail,
+}));
+
+function onAuthorizeSuccess(data, accept) {
+  console.log('successful connection to socket.io');
+  accept();
+}
+
+function onAuthorizeFail(data, message, error, accept) {
+  console.log('failed connection to socket.io:', data, message);
+  if (error)
+    accept(new Error(message));
+}
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +48,7 @@ var middleware = function(req, res, next) {
 };
 
 // PassportJs
-require('./config/passeport.js')(app);
+require('./config/passeport.js')(app, SessionStore);
 
 // Socket.io
 require('./socket/chat.js')(io);
@@ -42,7 +67,12 @@ app.get('/loginSuccess', function(req, res, next) {
 });
 
 app.get('/*', function(req, res) {
-  res.render('template', { user:req.user || {} });
+  if (req.user) {
+    var user = req.user;
+    delete user.password;
+  }
+
+  res.render('template', { user:user || {} });
 });
 
 server.listen(2020, function() {
