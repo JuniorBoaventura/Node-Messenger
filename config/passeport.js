@@ -3,9 +3,8 @@ var session       = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var Users         = require('../schema/user');
 
-module.exports = function(app) {
+module.exports = function(app, SessionStore) {
 
-  app.use(session({ secret: 'Act0yoaj2D', resave: false, saveUninitialized: false}));
   app.use(passport.initialize());
   app.use(passport.session());
 
