@@ -92,3 +92,31 @@ body{
 .conversation{
 
 }
+
+.message{
+  background-color: #FFF;
+  max-width: 250px;
+  border-radius: 5px;
+  margin: 15px;
+  float: left;
+  padding: 10px;
+  font-size: 14px;
+}
+
+
+.message .username{
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.sent{
+  background-color: #178cf7 !important;
+  float: right;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
