@@ -18,6 +18,12 @@ function ChatController($scope, socket, user) {
   console.log(user.data);
 
   socket.on('newMessage', function(data) {
+    console.log(data);
+
+    if (data.userId === vm.user._id)
+      data.sent = true;
+
+    console.log(data);
     vm.messages.push(data);
   });
 

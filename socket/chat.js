@@ -11,16 +11,9 @@ module.exports = function(io) {
   // Socket.io
   io.on('connection', function(socket) {
     var client = socket.request.user;
-    console.log(client);
-    // socket.broadcast.emit('connection', client.username);
-    //
-    // socket.on('disconnect', function() {
-    //   socket.broadcast.emit('disconnect', client.username);
-    // });
-
     socket.on('message', function(data) {
       data.username = client.username;
-      console.log(client._id);
+      data.userId = client._id;
       io.emit('newMessage', data);
     });
 

@@ -1,7 +1,12 @@
 div(class="chatWrapper")
   div(class="topBar")
   div(class ="conversation" ng-repeat="message in chat.messages")
-    div {{ message.username + ':' + message.message }}
+    div(class="clearfix")
+      div( class="message" ng-class="{'sent': message.sent}") 
+        div(class="username")
+          {{ message.username }}
+        div(class="content")
+          {{ message.message }}
   
   form(id="form" ng-enter="chat.submit()")
     div(class="textBox")
